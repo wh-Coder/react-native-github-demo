@@ -1,4 +1,10 @@
 {
   "name": "imooc_gp",
-  "displayName": "imooc_gp"
+  "displayName": "imooc_gp",
+  "expo": {
+    "slug": "imooc_gp",
+    "name": "imooc_gp",
+    "sdkVersion": "21.0.0",
+    "entryPoint": "/Users/busyrat/iWork/imooc_gp/.vscode/exponentIndex.js"
+  }
 }
