@@ -16,12 +16,13 @@ import {
 import TabNavigator from 'react-native-tab-navigator';
 import NavigationBar from './NavigationBar'
 import ListViewTest from './ListViewTest'
+import FetchTest from './FetchTest'
 
 export default class imooc_gp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'tb_trending',
+      selectedTab: 'tb_favorite',
     }
   }
 
@@ -73,7 +74,7 @@ export default class imooc_gp extends Component {
             renderSelectedIcon={() => <Image style={[styles.image, { tintColor: 'red' }]} source={require('./res/images/ic_polular.png')} />}
             badgeText="1"
             onPress={() => this.setState({ selectedTab: 'tb_favorite' })}>
-            <View style={styles.page1}></View>
+            <FetchTest/>
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tb_my'}
