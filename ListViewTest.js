@@ -6,7 +6,7 @@ import {
   Text,
   View
 } from 'react-native';
-import NavigationBar from './NavigationBar'
+import NavigationBar from './js/common/NavigationBar'
 import Toast, {DURATION} from 'react-native-easy-toast'
 
 const data = {
