@@ -5,6 +5,7 @@ import {
   View,
 } from 'react-native';
 import NavigationBar from './NavigationBar'
+import HttpUtils from './HttpUtils'
 
 class FetchTest extends Component {
   constructor(props) {
@@ -15,8 +16,19 @@ class FetchTest extends Component {
   }
 
   onLoad(url) {
-    fetch(url)
-      .then(response => response.json())
+    // fetch(url)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     this.setState({
+    //       result: JSON.stringify(result)
+    //     })
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       result: JSON.stringify(error)
+    //     })
+    //   })
+    HttpUtils.get(url)
       .then(result => {
         this.setState({
           result: JSON.stringify(result)
@@ -29,16 +41,27 @@ class FetchTest extends Component {
       })
   }
 
-  onSubmit(url, data) {
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => response.json())
+  onSubmit(url, params) {
+    // fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     this.setState({
+    //       result: JSON.stringify(result)
+    //     })
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       result: JSON.stringify(error)
+    //     })
+    //   })
+    HttpUtils.post(url, params)
       .then(result => {
         this.setState({
           result: JSON.stringify(result)
