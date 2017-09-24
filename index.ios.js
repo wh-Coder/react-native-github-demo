@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -15,14 +15,16 @@ import {
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import NavigationBar from './NavigationBar'
+import ListViewTest from './ListViewTest'
 
 export default class imooc_gp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'tb_popular'
+      selectedTab: 'tb_trending',
     }
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -61,7 +63,7 @@ export default class imooc_gp extends Component {
             renderIcon={() => <Image style={styles.image} source={require('./res/images/ic_trending.png')} />}
             renderSelectedIcon={() => <Image style={[styles.image, { tintColor: 'yellow' }]} source={require('./res/images/ic_trending.png')} />}
             onPress={() => this.setState({ selectedTab: 'tb_trending' })}>
-            <View style={styles.page2}></View>
+            <ListViewTest />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tb_favorite'}

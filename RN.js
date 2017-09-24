@@ -5,6 +5,7 @@ import {
   Text,
   View
 } from 'react-native';
+import NavigationBar from './NavigationBar'
 
 export default class imooc_gp extends Component {
   constructor(props) {
@@ -15,11 +16,16 @@ export default class imooc_gp extends Component {
   }
   render() {
     return (
-      <View></View>
+      <View style={styles.container}>
+
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  }
 });
