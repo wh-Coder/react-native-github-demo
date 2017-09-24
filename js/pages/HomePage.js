@@ -14,15 +14,15 @@ import {
   View
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import NavigationBar from '../common/NavigationBar'
 import ListViewTest from '../../ListViewTest'
 import FetchTest from '../../FetchTest'
+import PopularPage from './PopularPage'
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'tb_favorite',
+      selectedTab: 'tb_popular',
     }
   }
 
@@ -38,24 +38,7 @@ export default class HomePage extends Component {
             renderSelectedIcon={() => <Image style={[styles.image, { tintColor: 'red' }]} source={require('../../res/images/ic_polular.png')} />}
             badgeText="1"
             onPress={() => this.setState({ selectedTab: 'tb_popular' })}>
-            <View style={styles.page1}>
-              <NavigationBar
-                title={'Boy'}
-                style={{
-                  backgroundColor: '#ee6363'
-                }}
-                leftButton={
-                  (<TouchableOpacity>
-                    <Image style={{ width: 22, height: 22, margin: 10 }} source={require('../../res/images/ic_arrow_back_white_36pt.png')} />
-                  </TouchableOpacity>)
-                }
-                rightButton={
-                  (<TouchableOpacity>
-                    <Image style={{ width: 22, height: 22, margin: 10 }} source={require('../../res/images/ic_star.png')} />
-                  </TouchableOpacity>)
-                }
-              />
-            </View>
+            <PopularPage />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tb_trending'}

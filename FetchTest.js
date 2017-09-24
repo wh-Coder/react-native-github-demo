@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 import NavigationBar from './js/common/NavigationBar'
-import HttpUtils from './HttpUtils'
+import HttpUtils from './js/common/HttpUtils'
 
 class FetchTest extends Component {
   constructor(props) {
