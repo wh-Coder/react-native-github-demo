@@ -11,16 +11,40 @@ import NavigationBar from '../common/NavigationBar'
 import HttpUtils from '../common/HttpUtils'
 import ScrollableTabView, {ScrollableTabBar} from 'react-native-scrollable-tab-view'
 import RespositoryCeil from '../common/RespositoryCeil'
-
-
+import Language, {FLAG_LANGUAGE} from '../common/Language'
 class PopularPage extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.language = new Language(FLAG_LANGUAGE.flag_key)
+    this.state = {
+      language: []
+    }
+  }
+
+  componentDidMount() {
+    console.log('hello')
+    this.language.fetch()
+      .then(result => {
+        this.setState({
+          language: result
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  renderTab() {
+    return this.state.language.map((result,i,arr) => {
+      if(result.checked)
+      return <PopularTab key={i} tabLabel={result.name}>{result.name}</PopularTab>
+    })
   }
 
   render() {
+    let len = this.state.language.length
+    if(len ===0 ) return <View style={styles.container}/>
     return (
       <View style={styles.container}>
         <NavigationBar
@@ -33,10 +57,7 @@ class PopularPage extends Component {
           tabBarActiveTextColor="white"
           tabBarUnderlineStyle={{backgroundColor: '#e7e7e7',height: 2}}
           renderTabBar={() => <ScrollableTabBar/>}>
-          <PopularTab tabLabel="java">java</PopularTab>
-          <PopularTab tabLabel="ios">ios</PopularTab>
-          <PopularTab tabLabel="android">android</PopularTab>
-          <PopularTab tabLabel="javascript">javascript</PopularTab>
+          {this.renderTab()}
         </ScrollableTabView>
       </View>
     )

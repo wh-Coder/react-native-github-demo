@@ -18,6 +18,7 @@ import ListViewTest from '../../test/ListViewTest'
 import FetchTest from '../../test/FetchTest'
 import AsyncStorageTest from '../../test/AsyncStorageTest'
 import PopularPage from './PopularPage'
+import MyPage from './my/MyPage'
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -67,7 +68,8 @@ export default class HomePage extends Component {
             renderIcon={() => <Image style={styles.image} source={require('../../res/images/ic_trending.png')} />}
             renderSelectedIcon={() => <Image style={[styles.image, { tintColor: 'yellow' }]} source={require('../../res/images/ic_trending.png')} />}
             onPress={() => this.setState({ selectedTab: 'tb_my' })}>
-            <AsyncStorageTest/>
+            {/*<AsyncStorageTest/>*/}
+            <MyPage navigation={this.props.navigation}/>
           </TabNavigator.Item>
         </TabNavigator>
       </View>
