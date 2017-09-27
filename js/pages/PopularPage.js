@@ -16,34 +16,34 @@ class PopularPage extends Component {
 
   constructor(props) {
     super(props)
-    this.language = new Language(FLAG_LANGUAGE.flag_key)
+    // this.language = new Language(FLAG_LANGUAGE.flag_key)
     this.state = {
-      language: []
+      // language: []
     }
   }
 
   componentDidMount() {
-    console.log('hello')
-    this.language.fetch()
-      .then(result => {
-        this.setState({
-          language: result
-        })
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    // console.log('hello')
+    // this.language.fetch()
+    //   .then(result => {
+    //     this.setState({
+    //       language: result
+    //     })
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
   }
 
   renderTab() {
-    return this.state.language.map((result,i,arr) => {
+    return this.props.language.map((result,i,arr) => {
       if(result.checked)
       return <PopularTab key={i} tabLabel={result.name}>{result.name}</PopularTab>
     })
   }
 
   render() {
-    let len = this.state.language.length
+    let len = this.props.language.length
     if(len ===0 ) return <View style={styles.container}/>
     return (
       <View style={styles.container}>

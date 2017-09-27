@@ -21,6 +21,10 @@ class MyPage extends Component {
           style={styles.tips}
           onPress={() => navigate('CustomKeyPage')}
         >自定义标签</Text>
+        <Text
+          style={styles.tips}
+          onPress={() => navigate('SortKeyPage')}
+        >标签排序页</Text>
       </View>
     )
   }

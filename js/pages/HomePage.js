@@ -20,12 +20,39 @@ import AsyncStorageTest from '../../test/AsyncStorageTest'
 import PopularPage from './PopularPage'
 import MyPage from './my/MyPage'
 
+import Language, {FLAG_LANGUAGE} from '../common/Language'
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props)
+    this.language = new Language(FLAG_LANGUAGE.flag_key)
     this.state = {
       selectedTab: 'tb_my',
+      language:[]
     }
+  }
+
+  componentDidMount() {
+    this.loadLanguage()
+  }
+
+  onPressPopular() {
+    this.loadLanguage()
+      .then(() => {
+        this.setState({ selectedTab: 'tb_popular' })
+      })
+  }
+
+  loadLanguage() {
+    return this.language.fetch()
+      .then(result => {
+        this.setState({
+          language: result
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -39,8 +66,8 @@ export default class HomePage extends Component {
             renderIcon={() => <Image style={styles.image} source={require('../../res/images/ic_polular.png')} />}
             renderSelectedIcon={() => <Image style={[styles.image, { tintColor: '#2196F3' }]} source={require('../../res/images/ic_polular.png')} />}
             badgeText="1"
-            onPress={() => this.setState({ selectedTab: 'tb_popular' })}>
-            <PopularPage />
+            onPress={() => this.onPressPopular()}>
+            <PopularPage language={this.state.language} />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tb_trending'}
